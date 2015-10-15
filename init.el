@@ -42,7 +42,7 @@
 ;; Shift-direction to move between windows 
 (windmove-default-keybindings)
 
-; Multi-web-mode
+;; Multi-web-mode
 (add-to-list 'load-path "~/.emacs.d/multi-web-mode")
 (require 'multi-web-mode)
    (setq mweb-default-major-mode 'html-mode)
@@ -52,10 +52,13 @@
    (setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
    (multi-web-global-mode 1)
 
-; Evil-mode
+;; Evil-mode
 (add-to-list 'load-path "~/.emacs.d/evil-mode")
 (require 'evil)
 (evil-mode 0)
+
+;; Switch : to ; in evil-mode
+(define-key evil-normal-state-map (kbd ";") 'evil-ex)
 
  ;; Lua-mode.el
 (add-to-list 'load-path "~/.emacs.d/lua-mode")
