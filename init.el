@@ -56,7 +56,6 @@
 (add-to-list 'load-path "~/.emacs.d/evil-mode")
 (require 'evil)
 (evil-mode 0)
-
 ;; Switch : to ; in evil-mode
 (define-key evil-normal-state-map (kbd ";") 'evil-ex)
 
@@ -65,3 +64,28 @@
 (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
 (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
 (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
+
+;; Ergo-key binding
+;; Vim curser movement
+(global-set-key (kbd "M-k") 'previous-line)
+(global-set-key (kbd "M-h") 'backward-char)
+(global-set-key (kbd "M-j") 'next-line)
+(global-set-key (kbd "M-l") 'forward-char)
+
+;; Word-movement
+(global-set-key (kbd "M-u") 'backward-word)
+(global-set-key (kbd "M-i") 'forward-word)
+(global-set-key (kbd "M-f") 'kill-word)
+(global-set-key (kbd "M-d") 'backward-kill-word)
+
+;; Marks &c.
+(global-set-key (kbd "M-SPC") 'set-mark-command)
+(global-set-key (kbd "<f2>") 'xah-cut-line-or-region)
+(global-set-key (kbd "<f3>") 'xah-copy-line-or-region)
+(global-set-key (kbd "<f4>") 'yank)       ; paste
+
+;; Extra
+(global-set-key (kbd "M-.") 'keyboard-escape-quit)
+(global-set-key (kbd "M-/") 'undo)
+(global-set-key (kbd "M-r") (kbd "C-m")) ; return
+(global-set-key (kbd "M-e") (kbd "C-i")) ; tab
