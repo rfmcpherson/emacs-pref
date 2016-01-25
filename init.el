@@ -53,11 +53,11 @@
    (multi-web-global-mode 1)
 
 ;; Evil-mode
-(add-to-list 'load-path "~/.emacs.d/evil-mode")
-(require 'evil)
-(evil-mode 0)
+;(add-to-list 'load-path "~/.emacs.d/evil-mode")
+;(require 'evil)
+;(evil-mode 0)
 ;; Switch : to ; in evil-mode
-(define-key evil-normal-state-map (kbd ";") 'evil-ex)
+;(define-key evil-normal-state-map (kbd ";") 'evil-ex)
 
  ;; Lua-mode.el
 (add-to-list 'load-path "~/.emacs.d/lua-mode")
