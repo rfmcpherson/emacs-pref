@@ -53,17 +53,23 @@
    (multi-web-global-mode 1)
 
 ;; Evil-mode
-(add-to-list 'load-path "~/.emacs.d/evil-mode")
-(require 'evil)
-(evil-mode 0)
+;(add-to-list 'load-path "~/.emacs.d/evil-mode")
+;(require 'evil)
+;(evil-mode 0)
 ;; Switch : to ; in evil-mode
-(define-key evil-normal-state-map (kbd ";") 'evil-ex)
+;(define-key evil-normal-state-map (kbd ";") 'evil-ex)
 
  ;; Lua-mode.el
 (add-to-list 'load-path "~/.emacs.d/lua-mode")
 (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
 (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
 (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
+
+;; Comment shortcut
+(global-set-key (kbd "\C-x C-/") 'comment-or-uncomment-region)
+
+;; C-z is dumb
+(global-set-key (kbd "\C-z") nil)
 
 ;; Ergo-key binding
 ;; Vim curser movement
@@ -89,3 +95,4 @@
 (global-set-key (kbd "M-/") 'undo)
 (global-set-key (kbd "M-r") (kbd "C-m")) ; return
 (global-set-key (kbd "M-e") (kbd "C-i")) ; tab
+(put 'downcase-region 'disabled nil)
