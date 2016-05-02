@@ -22,6 +22,18 @@
 
 ;; "The columns, Duke, the columns!"
 (column-number-mode) 
+
+;; Kill *Completions* buffer on any command
+;; http://stackoverflow.com/a/14995391/2479672
+(defun delete-completion-window-buffer (&optional output)
+  (interactive)
+  (dolist (win (window-list))
+    (when (string= (buffer-name (window-buffer win)) "*Completions*")
+      (delete-window win)
+      (kill-buffer "*Completions*")))
+  output)
+
+(add-hook 'pre-command-hook 'delete-completion-window-buffer)
 ;; ===================================================================
 
 
@@ -44,29 +56,6 @@
 ;; ===================================================================
 ;; Shift-direction to move between windows 
 (windmove-default-keybindings)
-
-;; Multi-web-mode
-(add-to-list 'load-path "~/.emacs.d/multi-web-mode")
-(require 'multi-web-mode)
-   (setq mweb-default-major-mode 'html-mode)
-   (setq mweb-tags '((php-mode "<\\?php\\|<\\? \\|<\\?=" "\\?>")
-                                            (js-mode "<script +\\(type=\"text/javascript\"\\|language=\"javascript\"\\)[^>]*>" "</script>")
-                      (css-mode "<style +type=\"text/css\"[^>]*>" "</style>")))
-   (setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
-   (multi-web-global-mode 1)
-
-;; Evil-mode
-;(add-to-list 'load-path "~/.emacs.d/evil-mode")
-;(require 'evil)
-;(evil-mode 0)
-;; Switch : to ; in evil-mode
-;(define-key evil-normal-state-map (kbd ";") 'evil-ex)
-
- ;; Lua-mode.el
-(add-to-list 'load-path "~/.emacs.d/lua-mode")
-(autoload 'lua-mode "lua-mode" "Lua editing mode." t)
-(add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
-(add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
 
 ;; Comment shortcut
 (global-set-key (kbd "\C-x C-/") 'comment-or-uncomment-region)
@@ -146,7 +135,8 @@
 ;; ===================================================================
 
 
-;; tmux (http://unix.stackexchange.com/questions/24414/shift-arrow-not-working-in-emacs-within-tmux)
+;; tmux stuff
+;; http://unix.stackexchange.com/questions/24414/shift-arrow-not-working-in-emacs-within-tmux
 ;; ===================================================================
 ;; handle tmux's xterm-keys
 ;; put the following line in your ~/.tmux.conf:
