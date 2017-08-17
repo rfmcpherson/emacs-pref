@@ -246,3 +246,41 @@
     )
   )      
 ;; ===================================================================
+
+
+;; Better text indentation
+;; ===================================================================
+(add-hook 'text-mode-hook
+          '(lambda ()
+             (setq indent-tabs-mode nil)
+             (setq tab-width 2)
+             (setq indent-line-function (quote insert-tab))))
+;; ===================================================================
+
+
+;; Org-mode
+;; ===================================================================
+(add-to-list 'load-path "~/path/to/orgdir/lisp")
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-cb" 'org-iswitchb)
+(setq org-agenda-files '("~/todo.org"))
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "|" "DONE(d)" "IN-PROGRESS" "CANCELED(c)" "BLOCKED(b)")))
+(setq org-todo-keyword-faces
+      '(("TODO" . org-warning) ("CANCELED" . "blue") ("IN-PROGRESS" . "orange")
+        ("BLOCKED" . (:foreground "red" :background "black" :weight bold))))
+(setq org-deadline-warning-days 0)
+(require 'org-agenda)
+(setq org-agenda-prefix-format '(
+  (agenda  . " ")
+  (timeline  . "  % s")
+  (todo  . " %i %-12:c")
+  (tags  . " %i %-12:c")
+  (search . " %i %-12:c")))
+(setq org-agenda-custom-commands
+      '(("c" "Simple agenda view"
+         ((agenda "")
+          (alltodo "")))))
+;; ===================================================================
