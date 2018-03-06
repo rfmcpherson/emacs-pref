@@ -5,13 +5,19 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#ad7fa8" "#8cc4ff" "#eeeeec"])
  '(custom-enabled-themes (quote (dichromacy)))
- '(inhibit-startup-screen t))
+ '(inhibit-startup-screen t)
+ '(org-agenda-files nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(font-lock-function-name-face ((t (:foreground "color-27"))))
+ '(minibuffer-prompt ((t (:foreground "color-27"))))
+ '(org-agenda-structure ((t (:foreground "color-27"))))
+ '(org-document-info ((t (:foreground "color-33"))))
+ '(org-document-title ((t (:foreground "color-33" :weight bold))))
+ '(org-drawer ((t (:foreground "color-33")))))
 
 
 
@@ -267,7 +273,7 @@
 (global-set-key "\C-cb" 'org-iswitchb)
 (setq org-agenda-files '("~/todo.org"))
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "|" "DONE(d)" "IN-PROGRESS" "CANCELED(c)" "BLOCKED(b)")))
+      '((sequence "TODO(t)" "IN-PROGRESS" "BLOCKED(b)" "|" "DONE(d)" "CANCELED(c)")))
 (setq org-todo-keyword-faces
       '(("TODO" . org-warning) ("CANCELED" . "blue") ("IN-PROGRESS" . "orange")
         ("BLOCKED" . (:foreground "red" :background "black" :weight bold))))
@@ -283,4 +289,5 @@
       '(("c" "Simple agenda view"
          ((agenda "")
           (alltodo "")))))
+(setq org-cycle-separator-lines 1)
 ;; ===================================================================
